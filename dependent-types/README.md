@@ -8,6 +8,25 @@ A _gentle_ introduction to dependent types using TypeScript for the purpose of
 
 Please read the chapters under /src in order.
 
+## Getting Started
+
+This demonstration uses TypeScript which means that we are going to have to ensure that the property TypeScript dependency has been loaded.
+
+- Please create a new Terminal Window (Ctrl+Shift+` on Windows).
+- Navigate into dependent-types
+
+```bash
+cd dependent-types
+```
+
+- assuming that you already have [NodeJS installed](https://nodejs.org/en/download/) and from the dependent-types folder
+
+```bash
+npm install
+```
+
+- That is it. You should now have the necessary version of TypeScript installed and are ready to rock and roll 🎸 with the presentation.
+
 ## Topics
 
 - Lays the foundation for thinking of Types as Sets.
