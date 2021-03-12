@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Given name.",
+      "title": "First Name"
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Surname or family name.",
+      "title": "Last Name"
+    },
+    "middleInitial": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1,
+      "title": "Middle Initial"
+    },
+    "address": {
+      "type": "object",
+      "title": "Address",
+      "required": ["line1", "city", "state"],
+      "properties": {
+        "line1": {
+          "type": "string",
+          "description": "Line 1 of the address",
+          "title": "Line 1",
+          "minLength": 2
+        },
+        "line2": {
+          "type": "string",
+          "description": "Line 2 of the address (optional)",
+          "title": "Line 2",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "title": "City",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "title": "State",
+          "minLength": 1
+        }
+      }
+    },
+    "$schema": { "type": "string" }
+  },
+  "required": ["firstName", "lastName"],
+  "additionalProperties": false
+}

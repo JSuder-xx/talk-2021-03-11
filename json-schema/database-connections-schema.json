@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "definitions": {
+    "baseConnection": {
+      "type": "object",
+      "properties": {
+        "serverName": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Server Name",
+          "description": "The name of the server."
+        },
+        "databaseName": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Database Name",
+          "description": "The name of the database to which this environment will connect."
+        }
+      },
+      "required": ["databaseName", "serverName"]
+    },
+    "connection": {
+      "description": "A connection to a database is one of two different shapes.",
+      "oneOf": [
+        {
+          "allOf": [
+            { "$ref": "#/definitions/baseConnection" },
+            {
+              "properties": {
+                "integratedSecurity": {
+                  "const": true,
+                  "description": "Indicate that integrated security will be used so a username and password is not required."
+                }
+              },
+              "required": ["integratedSecurity"]
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/definitions/baseConnection" },
+            {
+              "properties": {
+                "integratedSecurity": {
+                  "const": false,
+                  "description": "Integrated security is not used so we are gonna need a username and password."
+                },
+                "userName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "title": "User Name",
+                  "description": "Username of account connecting to database."
+                },
+                "password": {
+                  "type": "string",
+                  "minLength": 5,
+                  "title": "Password",
+                  "description": "Password of account connecting to database."
+                }
+              },
+              "required": ["integratedSecurity", "userName", "password"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "properties": {
+    "environments": {
+      "type": "object",
+      "properties": {
+        "production": { "$ref": "#/definitions/connection" },
+        "loadTesting": { "$ref": "#/definitions/connection" },
+        "functionalTesting": { "$ref": "#/definitions/connection" }
+      },
+      "required": ["production"]
+    },
+    "$schema": { "type": "string" }
+  },
+  "required": ["environments"],
+  "additionalProperties": false
+}

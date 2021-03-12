@@ -1,0 +1,17 @@
+{
+  "$schema": "./database-connections-schema.json",
+  "environments": {
+    "loadTesting": {
+      "serverName": "virtual-machine",
+      "databaseName": "Freaked",
+      "integratedSecurity": true
+    },
+    "production": {
+      "serverName": "BigMetal",
+      "databaseName": "Application",
+      "integratedSecurity": false,
+      "userName": "BobRoss",
+      "password": "FluffyTrees"
+    }
+  }
+}
